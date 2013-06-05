@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <!--
+Copyright (c) 2013 by grgrdvrt (http://codepen.io/grgrdvrt/pen/gldjp)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+  <title>clouds - CodePen</title>
+
+  <script>
+    window.confirm = function(){};
+    window.prompt  = function(){};
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    window.ontouchstart = function(){};
+  </script>
+
+
+  <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
+  <style type="text/css">
+  	* { margin:0; padding:0; } /* to remove the top and left whitespace */
+
+	html, body { width:100%; height:100%;font-family: 'Arvo', serif;color:white;} /* just to be sure these are full screen*/
+
+	canvas { display:block; } /* To remove the scrollbars */
+  </style>
+
+
+
+</head>
+
+<body>
+
+<div style="width:430px;position:absolute;left:0;padding:50px;">
+	<h1>Hexágono Final - Mañaneros</h1>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br></p>
+
+	<iframe width="400px;" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F49241601&amp;color=00deff&amp;auto_play=false&amp;show_artwork=true"></iframe>
+</div>
+
+<img src="arte.png" style="position:absolute;right:10%;">
+	<canvas id="canvas"></canvas>
+
+
+  <script>
+  var width;
+  var height;
+    function HSLA(h, s, l, a)
+{
+	this.h = h;
+	this.s = s;
+	this.l = l;
+	this.a = a === 0 ? 0 : (a ? a : 1);
+}
+
+HSLA.prototype = {
+	clone : function()
+	{
+		return new HSLA(this.h, this.s, this.l, this.a);
+	},
+
+	toString : function()
+	{
+		var h = Math.round(this.h);
+		var s = Math.round(this.s);
+		var l = Math.round(this.l);
+		return "hsla(" + h + ", " + s + "%, " + l + "%, " + this.a + ")";
+	}
+}
+
+    
+
+//var width = 700;
+//var height = 700;
+
+//var canvas = document.getElementsById("canvas");
+//canvas.width = width;
+//canvas.height = height;
+//var body = document.getElementsByTagName("body")[0];
+//body.appendChild(canvas);
+
+
+    function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            width = canvas.width ;
+			height = canvas.height;
+    }
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext("2d");
+
+// resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', resizeCanvas, false);
+
+    resizeCanvas();
+
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var framerate = 1000 / 60;
+
+function Node ()
+{
+	this.x = this.y = 0;
+	this.vx = this.vy = 0;
+
+	this.top = null;
+	this.bottom = null;
+	this.left = null;
+	this.right = null;
+}
+
+var color = new HSLA(180, 100, 25);
+
+var friction = 0.999;
+var ranVel = 0.3;
+var nx = ny = 15;
+var constraintLength = 25;
+var constraintForce = 0.5;
+
+var boundaryForce = 0.01;
+
+var dx = 0.5 * (width - (nx * constraintLength)) 
+var dy = 0.5 * (height - (nx * constraintLength)) 
+
+function Cloud()
+{
+	this.nodes = [];
+	for(var j = 0; j < ny; j++)
+	{
+		for(var i = 0; i < nx; i++)
+		{
+			var node = new Node();
+			node.x = i * constraintLength + dx;
+			node.y = j * constraintLength + dy;
+			var id = this.nodes.length;
+			if(i > 0)
+			{
+				node.left = this.nodes[id - 1];
+				node.left.right = node;
+			}
+			if(j > 0)
+			{
+				node.top = this.nodes[id - nx];
+				node.top.bottom = node;
+			}
+
+			node.vx += 0.1 * (Math.random() * 2 - 1);
+			node.vy += 0.1 * (Math.random() * 2 - 1);
+			node.color = color.clone();
+			node.color.l += Math.random() * (100 - color.l);
+			node.color.a = 1;
+
+			this.nodes[id] = node;
+		}
+	}
+
+}
+
+Cloud.prototype = {
+
+	update : function ()
+	{
+		var n = this.nodes.length;
+		for(var i = 0; i < n; i++)
+		{
+			var node = this.nodes[i];
+			if(node.bottom) this.applyConstraint(node, node.bottom);
+			if(node.right) this.applyConstraint(node, node.right);
+			node.vx += ranVel * (Math.random() * 2 - 1);
+			node.vy += ranVel * (Math.random() * 2 - 1);
+			node.vx *= friction;
+			node.vy *= friction;
+			node.x += node.vx;
+			node.y += node.vy;
+
+			if(node.x < 0)
+				node.vx += boundaryForce;
+			else if(node.x > width)
+				node.vx -= boundaryForce;
+			if(node.y < 0)
+				node.vy += boundaryForce;
+			else if(node.y > height)
+				node.vy -= boundaryForce;
+		}
+	},
+
+	applyConstraint : function (a, b)
+	{
+		var dx = b.x - a.x;
+		var dy = b.y - a.y;
+		var dist = Math.sqrt(dx * dx + dy * dy);
+		var delta = constraintLength - dist;
+		var ratio = 0.5 * delta / dist;
+		a.x -= constraintForce * dx * ratio;
+		a.y -= constraintForce * dy * ratio;
+		b.x += constraintForce * dx * ratio;
+		b.y += constraintForce * dy * ratio;
+	},
+
+	draw : function ()
+	{
+		var n = this.nodes.length;
+		for(var i = 0; i < n; i++)
+		{
+			var node = this.nodes[i];
+			if(node.top && node.left)
+			{
+				ctx.fillStyle = node.color.toString();
+				ctx.beginPath();
+				ctx.moveTo(node.x, node.y);
+				ctx.lineTo(node.left.x, node.left.y);
+				ctx.lineTo(node.left.top.x, node.left.top.y);
+				ctx.lineTo(node.top.x, node.top.y);
+				ctx.lineTo(node.x, node.y);
+				ctx.fill();
+			}
+		}
+	}
+}
+
+var cloud1 = new Cloud();
+var cloud2 = new Cloud();
+
+function update()
+{
+	ctx.clearRect(0, 0, width, height);
+	ctx.fillStyle = color.toString();
+	ctx.fillRect(0, 0, width, height);
+	cloud1.update();
+	cloud2.update();
+	cloud1.draw();
+	cloud2.draw();
+	setTimeout(update.bind(this), framerate);
+}
+
+update();
+    //@ sourceURL=pen.js
+  </script>
+
+</body>
+
+</html>
