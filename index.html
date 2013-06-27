@@ -16,7 +16,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 
-  <title>clouds - CodePen</title>
+  <title>MAÑANEROS</title>
 
   <script>
     window.confirm = function(){};
@@ -33,9 +33,51 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   <style type="text/css">
   	* { margin:0; padding:0; } /* to remove the top and left whitespace */
 
+  	h1, h2, h3, h4, h5, h6 {margin: 0; padding: 0;}
+
+  	a {color: white }
+
 	html, body { width:100%; height:100%;font-family: 'Arvo', serif;color:white;} /* just to be sure these are full screen*/
 
 	canvas { display:block; } /* To remove the scrollbars */
+
+	/* This gets Google to fall into place */
+.social {
+	font-size: 1px;
+	margin-left: 18px;
+}
+ 
+/* This gets Facebook to fall into place */
+.social iframe {
+	vertical-align: middle;
+}
+ 
+/* Set an optional width for your button wrappers */
+.social span {
+	display: inline-block;
+	width: 130px;
+
+}
+ 
+/* Adjust the widths individually if you like */
+.social .twitter {
+	width: 80px;
+}
+.social .soundcloud {
+	width: 100px;
+	padding-top: 15px;
+}
+#uy {
+	width:340px;
+	position:absolute;
+	left:20px;
+	top:20px;
+	padding:10px;
+	background: rgb(0, 0, 0) transparent; /* default fallback */
+	background: rgba(0, 0, 0, 0.2); /* nice browsers */
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000); /* IE 6/7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000)"; /* IE8 */
+}
   </style>
 
 
@@ -44,19 +86,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <body>
 
-<div style="width:430px;position:absolute;left:0;padding:50px;">
-	<h1>Hexágono Final - Mañaneros</h1>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br></p>
+<div style="max-width: 1200px;">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/es_LA/all.js#xfbml=1&appId=291207770164";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
-	<iframe width="400px;" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F49241601&amp;color=00deff&amp;auto_play=false&amp;show_artwork=true"></iframe>
+
+<div id="uy">
+	<h2>mañaneros</h2>
+	<h1>Hexágono Final</h1>
+	<small>[LP 2013 - Independiente]</small>
+	<br><br>
+	<p>Descarga el nuevo disco de la banda chilena <a href="https://www.facebook.com/pages/Mañaneros/122649074480761" target="_blank">Mañaneros</a>, maestros del <i>"postfolk tribal, altiplanico mixto, merengue dubstep y el papi más suave"</i> en <a href="">mp3 de 320kbp</a>. También puedes escucharlo &darr;acá&darr;</p><br>
+<center>
+	<object height="300" width="300"><param name="movie" value="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F6920274&amp;color=fb532d&amp;auto_play=false&amp;player_type=artwork"></param><param name="allowscriptaccess" value="always"></param><embed allowscriptaccess="always" width="300" height="300" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F6920274&amp;color=fb532d&amp;auto_play=false&amp;player_type=artwork" type="application/x-shockwave-flash"></embed></object>
+
+</center>
+	<div class="social">
+	<span class="twitter">
+		<a href="https://twitter.com/mananeros" class="twitter-follow-button" data-show-count="false" data-lang="es" data-show-screen-name="false">Seguir a @mananeros</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	</span>
+	<span class="Facebook">
+		<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FMa%C3%B1aneros%2F122649074480761&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;font=trebuchet+ms&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=291207770164" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+	</span>
+
+<span class="soundcloud"><a href="https://soundcloud.com/mananeros/" target="_blank"><img src="http://connect.soundcloud.com/2/btn-connect-s.png" align="absmiddle"></a></span>
 </div>
 
-<img src="arte.png" style="position:absolute;right:10%;">
+</div>
+
+<img src="arte.png" style="position:absolute;right:50px;">
+</div>
 	<canvas id="canvas"></canvas>
 
 
@@ -129,13 +195,13 @@ function Node ()
 	this.right = null;
 }
 
-var color = new HSLA(180, 100, 25);
+var color = new HSLA(11, 96, 58);
 
 var friction = 0.999;
-var ranVel = 0.3;
+var ranVel = 0.8;
 var nx = ny = 15;
 var constraintLength = 25;
-var constraintForce = 0.5;
+var constraintForce = 0.05;
 
 var boundaryForce = 0.01;
 
