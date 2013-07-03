@@ -5,15 +5,10 @@
 <head>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!--
-Copyright (c) 2013 by grgrdvrt (http://codepen.io/grgrdvrt/pen/gldjp)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<!--
+DEVELOPED BY MEGO.CL
 -->
 
   <title>MAÑANEROS</title>
@@ -78,6 +73,56 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000); /* IE 6/7 */
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000)"; /* IE8 */
 }
+#booking {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	background-color: white;
+	color: red;
+	padding: 10px;
+	text-decoration: none;
+}
+#anterior {
+	width: 130px;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	background-color: white;
+	color: red;
+	padding: 10px;
+	text-decoration: none;
+	z-index:9999999;
+}
+#anterior a {
+	color: black;
+	text-decoration: none;
+}
+#newsletter {
+	width:230px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 99999999;
+	background-color: white;
+	padding:10px;
+	background: rgb(0, 0, 0) transparent; /* default fallback */
+	background: rgba(0, 0, 0, 0.2); /* nice browsers */
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000); /* IE 6/7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000)"; /* IE8 */
+}
+input
+{
+  font-size: 20px;
+  margin: 10px 0;
+  padding: 5px;
+  background-color: white;
+  border: none;
+}
+.button {
+	margin-top: 10px;
+	background-color: orange;
+	font-size: 12px;
+}
   </style>
 
 
@@ -97,12 +142,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+<div id="newsletter">
+	<!-- Begin MailChimp Signup Form -->
+	<div id="mc_embed_signup">
+	<form action="http://mego.us7.list-manage.com/subscribe/post?u=46fbbcb43639bb44c0bbaad28&amp;id=dbc9b2ee22" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+		
+	<div class="mc-field-group">
+		<label for="mce-EMAIL">Suscribete y enterate de nuevos lanzamientos y presentaciones</label>
+		<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+	</div>
+	<small>Powered by <a href="http://eepurl.com/BPQqX" title="MailChimp - email marketing made easy and fun">MailChimp</a></small>
+		<div id="mce-responses" class="clear">
+			<div class="response" id="mce-error-response" style="display:none"></div>
+			<div class="response" id="mce-success-response" style="display:none"></div>
+		</div>	<div class="clear"><input type="submit" value="Subscribete" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+	</form>
+	</div>
+
+	<!--End mc_embed_signup-->
+</div>
+
 <div id="uy">
 	<h2>mañaneros</h2>
 	<h1>Hexágono Final</h1>
-	<small>[LP 2013 - Independiente]</small>
-	<br><br>
-	<p>Descarga el nuevo disco de la banda chilena <a href="https://www.facebook.com/pages/Mañaneros/122649074480761" target="_blank">Mañaneros</a>, maestros del <i>"postfolk tribal, altiplanico mixto, merengue dubstep y el papi más suave"</i> en <a href="">mp3 de 320kbp</a>. También puedes escucharlo &darr;acá&darr;</p><br>
+	<!--<small>[LP 2013 - Independiente]</small>-->
+	<br>
+	<p>Descarga el nuevo disco de la banda chilena Mañaneros. / <small>Download the new record from the chilean band Mañaneros.</small></p>
+		<div style="padding:10px;">
+					<a href="https://www.dropbox.com/s/8j7cdze1gkw21i0/hexagono.zip">[LP MP3 320 kbp]</a>
+		</div>
+	 <p><small>Registro de 9 canciones grabadas en el Islote de los Niños Pajaros en Algarrobo y Santiago de Chile entre Noviembre del 2011 y Enero del 2013 por Mañaneros, y mezclado en los estudios de Ondacorta en Santiago.</small></p><br>
+	<p>También puedes escucharlo &darr;acá&darr;</p><br>
 <center>
 	<object height="300" width="300"><param name="movie" value="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F6920274&amp;color=fb532d&amp;auto_play=false&amp;player_type=artwork"></param><param name="allowscriptaccess" value="always"></param><embed allowscriptaccess="always" width="300" height="300" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fplaylists%2F6920274&amp;color=fb532d&amp;auto_play=false&amp;player_type=artwork" type="application/x-shockwave-flash"></embed></object>
 
@@ -121,7 +191,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 </div>
 
-<img src="arte.png" style="position:absolute;right:50px;">
+<a href="mailto:mananeros@tubatuba.net" id="booking">Booking/Press: mananeros@tubatuba.net</a>
+
+<div id="anterior"><a href="https://soundcloud.com/mananeros/sets/el-sonido-de-lo-inevitable">Mañaneros<br>El sonido de lo inevitable <BR><SMALL>[EP 2011]</SMALL>
+<br><br><img src="sonidodeloinevitable.gif"></a></div>
+
+<img src="arte.png" style="position:absolute;right:0px;">
 </div>
 	<canvas id="canvas"></canvas>
 
